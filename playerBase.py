@@ -3,7 +3,7 @@ from hand import Hand
 class PlayerBase:
 
     def __init__(self, name = "John Doe", hand = Hand()):
-        self.hand = hand 
+        self.hand = hand
         self.name = name
     
     def get_score(self):

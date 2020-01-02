@@ -3,9 +3,14 @@ Players or dealer hand
 """
 
 class Hand:
-    cards = []
-    def __init__(self, cards = []):
-        self.cards = cards
+    def __init__(self, cards = None):
+        """
+        If I put cards = [] in parameter, reference points at the same object across invocations
+        """
+        if cards:
+            self.cards = cards
+        else:
+            self.cards = []
     
     def append(self, card):
         self.cards.append(card)
