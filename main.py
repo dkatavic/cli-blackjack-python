@@ -68,31 +68,23 @@ def play_round(player, dealer):
             return finish_round(player, betting_amout, False)
         else:
             dealer.add_card(deck.draw())
-    
-            
-
-
-
 
 def main():
-
     player = Player(balance = 100, name = "John")
-    dealer = Dealer(name = "Give me monnies")
-    """
-    Gameplan:
-    * start partije
-    * odredi betting amout
-    * drawaj 2 karte (PlayerHand za ovo, da moze kalkulirat totalni value i tako)
-    * reci status
-    * input akciju
-    * stand or hit
-    * zatim dealer
-    * drawa dok ne bude veci od playera, dok ne hita 21 ili dok ne busta
-    * slijedeci turn
-    """
+    dealer = Dealer(name = "Goldfinger")
     playing_game = True
     while playing_game:
         play_round(player, dealer)
+        if player.balance <= 0:
+            print("You lost your credits. Play again, I feel you are going to win next time")
+            return
+        play_another = None
+        while play_another not in ('y', 'n'):
+            play_another = input("Do you want to play another game (y/n):")
+            if play_another == 'n':
+                playing_game = False
+                print(f'You are cashing out with a balance of {player.balance}')
+
 
         
 if __name__ == "__main__":
